@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Araz Omarofh</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="menu">
+    <a class="logo" href="#" onclick="return go('home')">A. Omarofh</a>
+
+    <nav>
+        <a href="#home" onclick="return go('home')">Home</a>
+        <a href="#about" onclick="return go('about')">About</a>
+        <a href="#gear" onclick="return go('gear')">Gear</a>
+        <a href="#projects" onclick="return go('projects')">Projects</a>
+        <a href="#videos" onclick="return go('videos')">Videos</a>
+        <a href="#thoughts" onclick="return go('thoughts')">Thoughts</a>
+        <a href="#contact" onclick="return go('contact')">Contact</a>
+    </nav>
+</div>
+
+<div class="content">
+
+    <section id="home" class="page">
+        <img src="poster.png" alt="">
+    </section>
+
+    <section id="about" class="page">
+        <h3>About</h3>
+        <p>Hi, I'm Araz Omarov, a 15-year-old technology enthusiast from Azerbaijan.</p>
+        <p>I am currently learning Full-Stack Development, Help Desk, and Cybersecurity.</p>
+        <p>I enjoy building projects while expanding my technical skills.</p>
+    </section>
+
+    <section id="gear" class="page">
+        <h3>-tech</h3>
+        <p>main computer — Lenovo IdeaPad Slim 3 12GB 512GB</p>
+        <p>secondary computers — HP TouchSmart 7320 PC 4GB 256GB</p>
+        <p>headphones - JBL live 460 NC</p>
+        <p>keyboard — AJAZZ NK61 White Red Switch</p>
+        <p>mouse — AJAZZ NJ08MC White</p>
+        <p>main cam — PENTAX Optio Z10</p>
+        <p>phone — Poco m5s</p>
+        <br>
+    </section>
+
+    <section id="projects" class="page">
+        <h3>Projects</h3>
+        <p>under construction</p>
+    </section>
+
+    <section id="videos" class="page">
+        <h3>Videos</h3>
+        <p>under construction</p>
+    </section>
+
+    <section id="thoughts" class="page">
+        <h3>Thoughts</h3>
+        <p>under construction</p>
+    </section>
+
+    <section id="contact" class="page">
+        <h3>Contact</h3>
+        <p>arazomarofhdev@proton.me</p>
+        <p>discord — @feelingnostalgia_</p>
+        <p>guns.lol — /feelingnostalgia</p>
+    </section>
+
+</div>
+
+<script>
+function go(pageId) {
+    document.querySelectorAll(".page").forEach(page => {
+        page.classList.remove("active");
+    });
+    document.querySelectorAll(".menu nav a").forEach(link => {
+        link.classList.remove("active");
+    });
+    document.getElementById(pageId).classList.add("active");
+    const activeLink = document.querySelector(
+        `.menu nav a[href="#${pageId}"]`
+    );
+    if (activeLink) {
+        activeLink.classList.add("active");
+    }
+    history.pushState(null, null, "#" + pageId);
+    return false;
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+    const page = location.hash.replace("#", "") || "home";
+    const target = document.getElementById(page);
+    if (target) {
+        target.classList.add("active");
+        const activeLink = document.querySelector(
+            `.menu nav a[href="#${page}"]`
+        );
+        if (activeLink) {
+            activeLink.classList.add("active");
+        }
+    }
+});
+</script>
+
+</body>
+</html>
